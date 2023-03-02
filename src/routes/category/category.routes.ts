@@ -21,4 +21,6 @@ categoryRoutes.post(
 
 categoryRoutes.get("", categoryControllers.categoriesList);
 
+categoryRoutes.get("/:id/realEstate", categoryControllers.listImoveisByCategory)
+
 export default categoryRoutes;
