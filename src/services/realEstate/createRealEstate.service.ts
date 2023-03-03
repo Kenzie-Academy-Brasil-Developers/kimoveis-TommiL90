@@ -22,7 +22,7 @@ if (payload.number) {
     const addressExists: Address | null = await addressRepo.findOne({
       where:{
           street: payload.street,
-          numbe: payload.number, 
+          number: payload.number, 
           city: payload.city
       }
     });
