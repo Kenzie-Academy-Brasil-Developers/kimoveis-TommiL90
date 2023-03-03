@@ -10,7 +10,7 @@ class Schedule {
   @Column({ type: "date" })
   date: Date;
 
-  @Column({ type: "time without time zone" })
+  @Column({ type: "time" })
   hour: string;
 
   @ManyToOne(() => User)
