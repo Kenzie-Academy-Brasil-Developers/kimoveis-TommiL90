@@ -4,9 +4,9 @@ import { categorySchema } from "./category.schemas";
 
 export const realEstateSchema = z.object({
     id: z.number().positive().int(),
-    sold: z.boolean(),
+    sold: z.boolean().default(false),
     value: z.number().min(0).max(9999999999.99).transform((val) => parseFloat(val.toFixed(2))), 
-    size: z.number(),
+    size: z.number().int().positive().min(1),
     createdAt: z.string(),
     updatedAt: z.string(),
     address: addressSchema,

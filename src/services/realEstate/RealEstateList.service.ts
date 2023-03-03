@@ -6,7 +6,11 @@ const listRealEstatesService = async (): Promise<RealEstate[]> => {
 
     const realEstateRepo: Repository<RealEstate> = AppDataSource.getRepository(RealEstate)
 
-    const findRealEstates: Array<RealEstate> = await realEstateRepo.find()
+    const findRealEstates: Array<RealEstate> = await realEstateRepo.find({
+        relations: {
+            address: true
+        }
+    })
 
 
 

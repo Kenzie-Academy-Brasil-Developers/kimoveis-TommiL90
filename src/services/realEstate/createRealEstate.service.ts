@@ -17,6 +17,24 @@ console.log(payload.zipCode)
 
   const categoryRepo: Repository<Category> = AppDataSource.getRepository(Category)
 
+if (payload.number) {
+    
+    const addressExists: Address | null = await addressRepo.findOne({
+      where:{
+          street: payload.street,
+          numbe: payload.number, 
+          city: payload.city
+      }
+    });
+  
+    if(addressExists){
+      throw new AppError(
+        "A visita só pode ser agendada em dias úteis (segunda a sexta).",
+        409
+      );
+    }
+}
+
   const newaddress = createAddressSchema.parse(payload)
   const address: Address = addressRepo.create(newaddress)
   await addressRepo.save(address)
