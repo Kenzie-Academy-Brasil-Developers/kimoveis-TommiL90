@@ -10,7 +10,7 @@ const validateTokenMiddleware = async (
     const authToken = request.headers.authorization;
   
     if (!authToken || authToken.length < 7) {
-      throw new AppError("Missing authorization token", 401);
+      throw new AppError("Missing bearer token", 401);
     }
     const token: string = authToken.split(" ")[1];
   

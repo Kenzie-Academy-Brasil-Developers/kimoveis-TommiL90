@@ -6,9 +6,9 @@ export const userSchema = z.object({
   email: z.string().email().max(100),
   password: z.string().max(120),
   admin: z.boolean().default(false),
-  createdAt: z.date(),
-  updatedAt: z.date().nullish(),
-  deletedAt: z.date().nullish(),
+  createdAt: z.string(),
+  updatedAt: z.string().nullish(),
+  deletedAt: z.string().nullish(),
 });
 
 export const createUserschema = userSchema.omit({

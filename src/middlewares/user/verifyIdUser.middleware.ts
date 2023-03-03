@@ -28,7 +28,7 @@ const verifyIdUserMiddleWare = async (
     }
   
     if (idParam !== idTokenUser) {
-      throw new AppError("Not permission for update or delete other users", 403);
+      throw new AppError("Insufficient permission", 403);
     }
   
     return next()

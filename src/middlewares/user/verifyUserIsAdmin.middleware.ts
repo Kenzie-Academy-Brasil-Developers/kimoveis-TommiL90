@@ -9,7 +9,7 @@ const verifyUserIsAdminMiddleware = async (
     const authtenticatedAdmin = request.user.admin;
   
     if (authtenticatedAdmin === false) {
-      throw new AppError("User don`t have permission", 403);
+      throw new AppError("Insufficient permission", 403);
     }
   
     return next();
