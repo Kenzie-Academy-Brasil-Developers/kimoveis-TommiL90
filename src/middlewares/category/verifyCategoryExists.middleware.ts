@@ -16,7 +16,7 @@ const verifyCategoryExistMiddleware = async (
   const user = await userRepo.findOneBy({ name: categoryName });
 
   if (user) {
-    throw new AppError("Category already exists.", 409);
+    throw new AppError("Category already exists", 409);
   }
 
   return next();

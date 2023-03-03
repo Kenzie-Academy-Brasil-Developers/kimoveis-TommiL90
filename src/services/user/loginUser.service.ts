@@ -12,13 +12,13 @@ const loginUserService = async (payload: tLoginUser): Promise<string> => {
   const user = await userRepo.findOneBy({ email: payload.email });
 
   if (!user) {
-    throw new AppError("Invalid email or password!", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const pwdMatch: boolean = await compare(payload.password, user.password);
 
   if (!pwdMatch) {
-    throw new AppError("Invalid email or password!", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const token: string = sign(

@@ -7,8 +7,8 @@ export const realEstateSchema = z.object({
     sold: z.boolean(),
     value: z.number().min(0).max(9999999999.99).transform((val) => parseFloat(val.toFixed(2))), 
     size: z.number(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
     address: addressSchema,
     category: categorySchema
   });
