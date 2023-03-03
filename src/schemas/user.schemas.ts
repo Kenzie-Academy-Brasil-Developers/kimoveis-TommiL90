@@ -5,7 +5,7 @@ export const userSchema = z.object({
   name: z.string().max(45),
   email: z.string().email().max(100),
   password: z.string().max(120),
-  admin: z.boolean(),
+  admin: z.boolean().default(false),
   createdAt: z.date(),
   updatedAt: z.date().nullish(),
   deletedAt: z.date().nullish(),

@@ -31,7 +31,7 @@ const verifyEmailExistMiddleware = async (
   
       if (user) {
         throw new AppError(
-          "Email already exists.",
+          "Email already exists",
           409
         );
       }
@@ -41,7 +41,7 @@ const verifyEmailExistMiddleware = async (
   }
 
   if (user) {
-    throw new AppError("Email already exists.", 409);
+    throw new AppError("Email already exists", 409);
   }
 
   return next();
