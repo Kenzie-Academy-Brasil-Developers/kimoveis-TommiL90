@@ -22,11 +22,8 @@ class RealEstate {
   @Column("decimal", { precision: 12, scale: 2 })
   value: number;
 
-  @Column({ default: false })
-  admin: boolean;
-
-  @Column({ length: 120 })
-  password: string;
+  @Column("int")
+  size: number;
 
   @CreateDateColumn()
   createdAt: string;

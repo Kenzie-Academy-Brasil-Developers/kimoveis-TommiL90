@@ -8,10 +8,10 @@ class Schedule {
   id: number;
 
   @Column({ type: "date" })
-  name: Date;
+  date: Date;
 
-  @Column({ type: "time" })
-  email: string;
+  @Column({ type: "time without time zone" })
+  hour: string;
 
   @ManyToOne(() => User)
   user: User;
