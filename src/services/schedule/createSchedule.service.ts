@@ -7,11 +7,9 @@ import { tCreateSchedule } from "../../interfaces/schedule.interfaces";
 const createScheduleService = async (
   { date, hour, realEstateId }: tCreateSchedule,
   idUser: number
-): Promise<Schedule> => {
-
-  const formatedDate = new Date(date)
-  console.log(date)
-  console.log(formatedDate)
+): Promise<{ message: string }> => {
+  const [ano, dia, mes] = date.split("/").map(Number);
+  const formatedDate = new Date(ano, mes - 1, dia);
 
   const scheduleRepo: Repository<Schedule> =
     AppDataSource.getRepository(Schedule);
@@ -21,29 +19,37 @@ const createScheduleService = async (
   const realEstateRepo: Repository<RealEstate> =
     AppDataSource.getRepository(RealEstate);
 
+  const realEstateExists: RealEstate | null = await realEstateRepo.findOneBy({
+    id: realEstateId
+  })
+
+  if(!realEstateExists){
+    throw new AppError("RealEstate not found", 404)
+  }
+
   // Verificar se a visita já foi agendada para a mesma data e hora
   const scheduleExists = await scheduleRepo
     .createQueryBuilder("schedule")
-    .where("schedule.date = :date", { date })
+    .where("schedule.date = :formatedDate", { formatedDate })
     .andWhere("schedule.hour = :hour", { hour })
     .andWhere("schedule.realEstateId = :realEstateId", { realEstateId })
     .getOne();
 
   if (scheduleExists) {
-    throw new AppError("Visita já agendada para essa data e horário.", 409);
+    throw new AppError("Schedule to this real estate at this date and time already exists", 409);
   }
 
   // Verificar se o usuário já tem outra visita agendada para a mesma data e hora
   const userHasSchedule = await scheduleRepo
     .createQueryBuilder("schedule")
-    .where("schedule.date = :date", { date })
+    .where("schedule.date = :formatedDate", { formatedDate })
     .andWhere("schedule.hour = :hour", { hour })
     .andWhere("schedule.user = :idUser", { idUser })
     .getOne();
 
   if (userHasSchedule) {
     throw new AppError(
-      "Usuário já tem outra visita agendada para essa data e horário.",
+      "User schedule to this real estate at this date and time already exists",
       409
     );
   }
@@ -53,7 +59,7 @@ const createScheduleService = async (
   const visitHour = parseInt(hourParts[0], 10);
   if (visitHour < 8 || visitHour >= 18) {
     throw new AppError(
-      "A visita só pode ser agendada durante o horário comercial (08:00 - 18:00).",
+      "Invalid hour, available times are 8AM to 18PM",
       400
     );
   }
@@ -63,7 +69,7 @@ const createScheduleService = async (
   const dayOfWeek = visitDate.getUTCDay();
   if (dayOfWeek === 0 || dayOfWeek === 6) {
     throw new AppError(
-      "A visita só pode ser agendada em dias úteis (segunda a sexta).",
+      "Invalid date, work days are monday to friday",
       400
     );
   }
@@ -89,9 +95,7 @@ const createScheduleService = async (
 
   await scheduleRepo.save(schedule);
 
-  const newSchedule = schedule;
-
-  return newSchedule;
+  return { message: "Schedule created" };
 };
 
 export default createScheduleService;

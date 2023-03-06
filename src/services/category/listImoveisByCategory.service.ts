@@ -13,7 +13,7 @@ const listImoveisByCategoryService = async (id: number): Promise<Category> => {
             id: id
         },
         relations: {
-            realStates: true
+            realEstate: true
         }
     })
 

@@ -2,13 +2,13 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Address, Category, RealEstate } from "../../entities";
 import { AppError } from "../../error";
-import { tCreateRealEstateAndAddress, tRealEstate } from "../../interfaces/realEstate.interfaces";
+import { tCreateRealEstateAndAddress, tResponseRealEstate } from "../../interfaces/realEstate.interfaces";
 import { createAddressSchema } from "../../schemas/address.schema";
-import { createRealEstateSchema, realEstateSchema } from "../../schemas/realEstate.schemas";
+import { createRealEstateSchema, returnRealEstateSchema } from "../../schemas/realEstate.schemas";
 
 
-const createRealStateService = async (payload: tCreateRealEstateAndAddress): Promise<tRealEstate> => {
-console.log(payload.zipCode)
+const createRealStateService = async (payload: tCreateRealEstateAndAddress): Promise<tResponseRealEstate> => {
+
   const addressRepo: Repository<Address> = AppDataSource.getRepository(Address)
 
   const realEstateRepo: Repository<RealEstate> = AppDataSource.getRepository(RealEstate)
@@ -57,8 +57,8 @@ const realEstate: RealEstate = realEstateRepo.create({
 
 await realEstateRepo.save(realEstate)
   
-const resRealEstateRepo = realEstateSchema.parse(realEstate)
-return resRealEstateRepo
+const responseRealEstate = returnRealEstateSchema.parse(realEstate)
+return responseRealEstate
 }
 
 export default createRealStateService;

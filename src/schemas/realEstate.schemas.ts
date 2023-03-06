@@ -1,4 +1,4 @@
-import {union, z } from "zod";
+import { union, z } from "zod";
 import { addressSchema, createAddressSchema } from "./address.schema";
 import { categorySchema } from "./category.schemas";
 
@@ -33,4 +33,9 @@ export const requestCreateRealEstateSchema = createRealEstateSchema.extend({
     number: z.string().max(6).optional(),
     city: z.string().max(20),
     state: z.string().max(2)
+})
+
+
+export const returnRealEstateSchema = realEstateSchema.omit({
+  category: true
 })

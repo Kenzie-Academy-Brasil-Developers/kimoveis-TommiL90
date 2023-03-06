@@ -17,10 +17,10 @@ scheduleRoutes.post(
 );
 
 scheduleRoutes.get(
-  "",
+  "/realEstate/:id",
   validateTokenMiddleware,
   verifyUserIsAdminMiddleware,
-  scheduleController.listSchedules
+  scheduleController.listScheduleByRealEstate
 );
 
 export default scheduleRoutes;
