@@ -94,7 +94,7 @@ const createScheduleService = async (
   });
 
   await scheduleRepo.save(schedule);
-
+  console.log(schedule)
   return { message: "Schedule created" };
 };
 

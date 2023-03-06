@@ -36,6 +36,4 @@ export const requestCreateRealEstateSchema = createRealEstateSchema.extend({
 })
 
 
-export const returnRealEstateSchema = realEstateSchema.omit({
-  category: true
-})
+export const returnRealEstateSchema = realEstateSchema

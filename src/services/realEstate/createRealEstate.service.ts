@@ -8,7 +8,7 @@ import { createRealEstateSchema, returnRealEstateSchema } from "../../schemas/re
 
 
 const createRealStateService = async (payload: tCreateRealEstateAndAddress): Promise<tResponseRealEstate> => {
-
+console.log("opa")
   const addressRepo: Repository<Address> = AppDataSource.getRepository(Address)
 
   const realEstateRepo: Repository<RealEstate> = AppDataSource.getRepository(RealEstate)
@@ -45,19 +45,20 @@ if(!category){
     throw new AppError('Category not found', 404)
 }
 
-const { size, value, sold } = createRealEstateSchema.parse({...payload})
+const { size, value, sold } = createRealEstateSchema.parse(payload)
 
 const realEstate: RealEstate = realEstateRepo.create({
     value: value,
     size: size,
     sold: sold,
-    address: address!,
+    address: address,
     category: category
 })
 
 await realEstateRepo.save(realEstate)
   
 const responseRealEstate = returnRealEstateSchema.parse(realEstate)
+console.log(responseRealEstate)
 return responseRealEstate
 }
 
