@@ -2,14 +2,12 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Address, Category, RealEstate } from "../../entities";
 import { AppError } from "../../error";
-import { tCategory, tCreateCategory } from "../../interfaces/category.interfaces";
-import { tCreateRealEstateAndAddress } from "../../interfaces/realEstate.interfaces";
+import { tCreateRealEstateAndAddress, tRealEstate } from "../../interfaces/realEstate.interfaces";
 import { createAddressSchema } from "../../schemas/address.schema";
-import { categorySchema } from "../../schemas/category.schemas";
-import { createRealEstateSchema } from "../../schemas/realEstate.schemas";
+import { createRealEstateSchema, realEstateSchema } from "../../schemas/realEstate.schemas";
 
 
-const createRealStateService = async (payload: tCreateRealEstateAndAddress): Promise<RealEstate> => {
+const createRealStateService = async (payload: tCreateRealEstateAndAddress): Promise<tRealEstate> => {
 console.log(payload.zipCode)
   const addressRepo: Repository<Address> = AppDataSource.getRepository(Address)
 
@@ -29,7 +27,7 @@ if (payload.number) {
   
     if(addressExists){
       throw new AppError(
-        "A visita só pode ser agendada em dias úteis (segunda a sexta).",
+        "Address already exists",
         409
       );
     }
@@ -47,19 +45,20 @@ if(!category){
     throw new AppError('Category not found', 404)
 }
 
-const { size, value } = createRealEstateSchema.parse({...payload})
+const { size, value, sold } = createRealEstateSchema.parse({...payload})
 
 const realEstate: RealEstate = realEstateRepo.create({
     value: value,
     size: size,
+    sold: sold,
     address: address!,
     category: category
 })
 
 await realEstateRepo.save(realEstate)
   
-
-return realEstate
+const resRealEstateRepo = realEstateSchema.parse(realEstate)
+return resRealEstateRepo
 }
 
 export default createRealStateService;

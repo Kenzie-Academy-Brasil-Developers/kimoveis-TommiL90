@@ -1,6 +1,8 @@
 import { z } from "zod";
-import { createRealEstateSchema, requestCreateRealEstateSchema } from "../schemas/realEstate.schemas";
+import { createRealEstateSchema, realEstateSchema, requestCreateRealEstateSchema } from "../schemas/realEstate.schemas";
 
+
+export type tRealEstate = z.infer<typeof realEstateSchema>
 
 export type createRealEstate  = z.infer<typeof createRealEstateSchema>
 

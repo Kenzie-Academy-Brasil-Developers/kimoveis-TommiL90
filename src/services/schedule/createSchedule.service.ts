@@ -10,6 +10,8 @@ const createScheduleService = async (
 ): Promise<Schedule> => {
 
   const formatedDate = new Date(date)
+  console.log(date)
+  console.log(formatedDate)
 
   const scheduleRepo: Repository<Schedule> =
     AppDataSource.getRepository(Schedule);
@@ -24,7 +26,7 @@ const createScheduleService = async (
     .createQueryBuilder("schedule")
     .where("schedule.date = :date", { date })
     .andWhere("schedule.hour = :hour", { hour })
-    .andWhere("schedule.propertyId = :realEstateId", { realEstateId })
+    .andWhere("schedule.realEstateId = :realEstateId", { realEstateId })
     .getOne();
 
   if (scheduleExists) {

@@ -1,9 +1,11 @@
 import { Router } from "express";
 import scheduleController from "../../controllers/schedule";
-import { validateBodyMiddleware, validateTokenMiddleware } from "../../middlewares";
+import {
+  validateBodyMiddleware,
+  validateTokenMiddleware,
+  verifyUserIsAdminMiddleware,
+} from "../../middlewares";
 import { createScheduleSchema } from "../../schemas/schedule.schema";
-
-
 
 const scheduleRoutes: Router = Router();
 
@@ -14,4 +16,11 @@ scheduleRoutes.post(
   scheduleController.createSchedule
 );
 
-export default scheduleRoutes
+scheduleRoutes.get(
+  "",
+  validateTokenMiddleware,
+  verifyUserIsAdminMiddleware,
+  scheduleController.listSchedules
+);
+
+export default scheduleRoutes;
