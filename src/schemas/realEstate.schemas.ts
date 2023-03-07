@@ -7,9 +7,9 @@ export const realEstateSchema = z.object({
     sold: z.boolean().default(false),
     value: union([
         z.string().min(0).max(9999999999.99).transform((val) => parseFloat(val).toFixed(2)),
-        z.number().min(0).max(9999999999.99).transform((val) => parseFloat(val.toFixed(2)).toString()),
+        z.number().min(0).max(9999999999.99).transform((val) => parseFloat(val.toFixed(2))),
       ]),
-    size: z.number().int().positive().min(1),
+    size: z.number().int().positive(),
     createdAt: z.string(),
     updatedAt: z.string(),
     address: addressSchema,
@@ -23,17 +23,17 @@ export const createRealEstateSchema = realEstateSchema.omit({
     createdAt: true,
     updatedAt: true,
 }).extend({
-    categoryId: z.number()
+    categoryId: z.number(),
+    address: z.object({
+      street: z.string().max(45),
+      zipCode: z.string().max(8),
+      number: z.string().max(7).optional(),
+      city: z.string().max(20),
+      state: z.string().max(2)
+    })
 })
 
 
-export const requestCreateRealEstateSchema = createRealEstateSchema.extend({
-    street: z.string().max(45),
-    zipCode: z.string().max(8),
-    number: z.string().max(6).optional(),
-    city: z.string().max(20),
-    state: z.string().max(2)
-})
 
 
 export const returnRealEstateSchema = realEstateSchema

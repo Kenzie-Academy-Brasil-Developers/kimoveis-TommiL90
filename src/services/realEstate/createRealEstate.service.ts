@@ -15,13 +15,13 @@ console.log("opa")
 
   const categoryRepo: Repository<Category> = AppDataSource.getRepository(Category)
 
-if (payload.number) {
+if (payload.address.number) {
     
     const addressExists: Address | null = await addressRepo.findOne({
       where:{
-          street: payload.street,
-          number: payload.number, 
-          city: payload.city
+          street: payload.address.street,
+          number: payload.address.number, 
+          city: payload.address.city
       }
     });
   
@@ -33,7 +33,7 @@ if (payload.number) {
     }
 }
 
-  const newaddress = createAddressSchema.parse(payload)
+  const newaddress = createAddressSchema.parse(payload.address)
   const address: Address = addressRepo.create(newaddress)
   await addressRepo.save(address)
 
@@ -58,7 +58,6 @@ const realEstate: RealEstate = realEstateRepo.create({
 await realEstateRepo.save(realEstate)
   
 const responseRealEstate = returnRealEstateSchema.parse(realEstate)
-console.log(responseRealEstate)
 return responseRealEstate
 }
 
