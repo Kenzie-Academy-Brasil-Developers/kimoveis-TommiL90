@@ -7,7 +7,7 @@ const verifyUserIsAdminMiddleware = async (
     next: NextFunction
   ): Promise<Response | void> => {
     const authtenticatedAdmin = request.user.admin;
-    console.log(authtenticatedAdmin)
+
     if (authtenticatedAdmin === false) {
       throw new AppError("Insufficient permission", 403);
     }

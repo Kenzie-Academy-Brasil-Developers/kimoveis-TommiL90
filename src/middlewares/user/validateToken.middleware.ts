@@ -26,7 +26,6 @@ const validateTokenMiddleware = async (
           id: parseInt(decoded.sub),
           admin: decoded.admin,
         };
-        console.log(request.user)
         return next();
       }
     );

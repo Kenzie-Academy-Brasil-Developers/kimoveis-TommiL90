@@ -8,6 +8,7 @@ const createScheduleService = async (
   { date, hour, realEstateId }: tCreateSchedule,
   idUser: number
 ): Promise<{ message: string }> => {
+
   const [ano, dia, mes] = date.split("/").map(Number);
   const formatedDate = new Date(ano, mes - 1, dia);
 
@@ -28,22 +29,36 @@ const createScheduleService = async (
   }
 
   // Verificar se a visita já foi agendada para a mesma data e hora
+
+  // const scheduleExists = await scheduleRepo
+  //   .createQueryBuilder("schedule")
+  //   .where("schedule.hour = :hour", { hour })
+  //   .andWhere("schedule.hour = :hour", { hour })
+  //   .andWhere("schedule.realEstateId = :realEstateId", { realEstateId })
+  //   .getOne();
+
   const scheduleExists = await scheduleRepo
-    .createQueryBuilder("schedule")
-    .where("schedule.date = :formatedDate", { formatedDate })
-    .andWhere("schedule.hour = :hour", { hour })
-    .andWhere("schedule.realEstateId = :realEstateId", { realEstateId })
-    .getOne();
+  .createQueryBuilder("schedule")
+  .where("schedule.hour = :hour", { hour })
+  .andWhere("schedule.realEstateId = :realEstateId", { realEstateId })
+  .getOne();
 
   if (scheduleExists) {
     throw new AppError("Schedule to this real estate at this date and time already exists", 409);
   }
 
   // Verificar se o usuário já tem outra visita agendada para a mesma data e hora
+
+  // const userHasSchedule = await scheduleRepo
+  //   .createQueryBuilder("schedule")
+  //   .where("schedule.date = :formatedDate", { formatedDate })
+  //   .andWhere("schedule.hour = :hour", { hour })
+  //   .andWhere("schedule.user = :idUser", { idUser })
+  //   .getOne();
+
   const userHasSchedule = await scheduleRepo
     .createQueryBuilder("schedule")
-    .where("schedule.date = :formatedDate", { formatedDate })
-    .andWhere("schedule.hour = :hour", { hour })
+    .where("schedule.hour = :hour", { hour })
     .andWhere("schedule.user = :idUser", { idUser })
     .getOne();
 
@@ -94,7 +109,7 @@ const createScheduleService = async (
   });
 
   await scheduleRepo.save(schedule);
-  console.log(schedule)
+
   return { message: "Schedule created" };
 };
 

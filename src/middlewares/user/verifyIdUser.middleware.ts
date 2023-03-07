@@ -10,7 +10,7 @@ const verifyIdUserMiddleWare = async (
   ): Promise<Response | void> => {
     
     const idParam: number = Number(request.params.id);
-    console.log(request.user)
+
     const idTokenUser = request.user.id
 
     const userRepo = AppDataSource.getRepository(User);
