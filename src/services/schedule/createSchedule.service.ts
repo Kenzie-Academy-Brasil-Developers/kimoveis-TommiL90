@@ -30,18 +30,12 @@ const createScheduleService = async (
 
   // Verificar se a visita já foi agendada para a mesma data e hora
 
-  // const scheduleExists = await scheduleRepo
-  //   .createQueryBuilder("schedule")
-  //   .where("schedule.hour = :hour", { hour })
-  //   .andWhere("schedule.hour = :hour", { hour })
-  //   .andWhere("schedule.realEstateId = :realEstateId", { realEstateId })
-  //   .getOne();
-
   const scheduleExists = await scheduleRepo
-  .createQueryBuilder("schedule")
-  .where("schedule.hour = :hour", { hour })
-  .andWhere("schedule.realEstateId = :realEstateId", { realEstateId })
-  .getOne();
+    .createQueryBuilder("schedule")
+    .where("schedule.hour = :hour", { hour })
+    .andWhere("schedule.hour = :hour", { hour })
+    .andWhere("schedule.realEstate.id = :realEstateId", { realEstateId })
+    .getOne();
 
   if (scheduleExists) {
     throw new AppError("Schedule to this real estate at this date and time already exists", 409);
