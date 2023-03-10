@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">35.29% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>12/34</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">35.29% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>12/34</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,28 +105,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { compare } from "bcryptjs";
@@ -137,29 +137,29 @@ import { User } from "../../entities";
 import { AppError } from "../../error";
 import { tLoginUser } from "../../interfaces/user.interfaces";
 &nbsp;
-const loginUserService = async (payload: tLoginUser): Promise&lt;string&gt; =&gt; {
-  const userRepo: Repository&lt;User&gt; = AppDataSource.getRepository(User);
-&nbsp;
-  const user = await userRepo.findOneBy({ email: payload.email });
-&nbsp;
-  if (!user) {
-    throw new AppError("Invalid credentials", 401);
-  }
-&nbsp;
-  const pwdMatch: boolean = await compare(payload.password, user.password);
-&nbsp;
-  if (!pwdMatch) {
-    throw new AppError("Invalid credentials", 401);
-  }
-&nbsp;
-  const token: string = sign(
-    { admin: user.admin },
-    String(process.env.SECRET_KEY),
-    { expiresIn: "24h", subject: String(user.id) }
-  );
-&nbsp;
-  return token
-};
+const loginUserService = <span class="fstat-no" title="function not covered" >async (payload: tLoginUser): Promise&lt;string&gt; =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const userRepo: Repository&lt;User&gt; = AppDataSource.getRepository(User);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const user = await userRepo.findOneBy({ email: payload.email });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  if (!user) {</span>
+<span class="cstat-no" title="statement not covered" >    throw new AppError("Invalid credentials", 401);</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const pwdMatch: boolean = await compare(payload.password, user.password);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  if (!pwdMatch) {</span>
+<span class="cstat-no" title="statement not covered" >    throw new AppError("Invalid credentials", 401);</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const token: string = sign(</span>
+<span class="cstat-no" title="statement not covered" >    { admin: user.admin },</span>
+<span class="cstat-no" title="statement not covered" >    String(process.env.SECRET_KEY),</span>
+<span class="cstat-no" title="statement not covered" >    { expiresIn: "24h", subject: String(user.id) }</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return token</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
 &nbsp;
 export default loginUserService</pre></td></tr></table></pre>
@@ -169,7 +169,7 @@ export default loginUserService</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-08T13:24:54.437Z
+                at 2023-03-10T22:43:24.463Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

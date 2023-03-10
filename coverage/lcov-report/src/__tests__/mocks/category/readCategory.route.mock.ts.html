@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>9/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>9/24</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,21 +94,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Repository } from 'typeorm';
@@ -117,22 +117,22 @@ import { Category } from '../../../entities';
 &nbsp;
 type iCategoryRepo = Repository&lt;Category&gt;;
 &nbsp;
-const manyCategories = async (): Promise&lt;any&gt; =&gt; {
-  const categoryRepo: iCategoryRepo = AppDataSource.getRepository(Category);
-  const categoryTotal: number = 5;
-&nbsp;
-  const manyCategories = Array.from(Array(categoryTotal)).map((val, index) =&gt; {
-    return { id: expect.any(Number), name: `category ${index}` };
-  });
-&nbsp;
-  await categoryRepo
-    .createQueryBuilder()
-    .insert()
-    .values(manyCategories.map(({ id, ...val }) =&gt; val))
-    .execute();
-&nbsp;
-  return manyCategories;
-};
+const manyCategories = <span class="fstat-no" title="function not covered" >async (): Promise&lt;any&gt; =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const categoryRepo: iCategoryRepo = AppDataSource.getRepository(Category);</span>
+<span class="cstat-no" title="statement not covered" >  const categoryTotal: number = 5;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const manyCategories = Array.from(Array(categoryTotal)).map((val, index) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return { id: expect.any(Number), name: `category ${index}` };</span>
+<span class="cstat-no" title="statement not covered" >  });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  await categoryRepo</span>
+<span class="cstat-no" title="statement not covered" >    .createQueryBuilder()</span>
+<span class="cstat-no" title="statement not covered" >    .insert()</span>
+<span class="cstat-no" title="statement not covered" >    .values(manyCategories.map(({ id, ...val }) =&gt; val))</span>
+<span class="cstat-no" title="statement not covered" >    .execute();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return manyCategories;</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
 export default { manyCategories };
 &nbsp;</pre></td></tr></table></pre>
@@ -142,7 +142,7 @@ export default { manyCategories };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-08T13:24:54.437Z
+                at 2023-03-10T22:43:24.463Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">47.82% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>11/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">47.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>11/23</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,20 +92,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response } from "express";
 import { tCreateRealEstateAndAddress, tRealEstate, tResponseRealEstate } from "../../interfaces/realEstate.interfaces";
@@ -113,21 +113,21 @@ import createRealStateService from "../../services/realEstate/createRealEstate.s
 import listRealEstatesService from "../../services/realEstate/RealEstateList.service";
 &nbsp;
 &nbsp;
-const createRealEstate = async (request: Request, response: Response) =&gt; {
+const createRealEstate = <span class="fstat-no" title="function not covered" >async (request: Request, response: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const data: tCreateRealEstateAndAddress = request.body;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const newRealEstate: tResponseRealEstate = await createRealStateService(data);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return response.status(201).json(newRealEstate);</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-  const data: tCreateRealEstateAndAddress = request.body;
-&nbsp;
-  const newRealEstate: tResponseRealEstate = await createRealStateService(data);
-&nbsp;
-  return response.status(201).json(newRealEstate);
-};
-&nbsp;
-const listRealEstates = async (request: Request, response: Response) =&gt; {
-  
-    const list = await listRealEstatesService()
-  
-    return response.status(200).json(list)
-  }
+const listRealEstates = <span class="fstat-no" title="function not covered" >async (request: Request, response: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  </span>
+<span class="cstat-no" title="statement not covered" >    const list = await listRealEstatesService()</span>
+<span class="cstat-no" title="statement not covered" >  </span>
+<span class="cstat-no" title="statement not covered" >    return response.status(200).json(list)</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
 export default { createRealEstate, listRealEstates }</pre></td></tr></table></pre>
 
@@ -136,7 +136,7 @@ export default { createRealEstate, listRealEstates }</pre></td></tr></table></pr
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-08T13:24:54.437Z
+                at 2023-03-10T22:43:24.463Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

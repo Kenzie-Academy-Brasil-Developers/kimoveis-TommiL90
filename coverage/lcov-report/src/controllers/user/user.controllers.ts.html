@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">35.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/42</span>
+                <span class='fraction'>15/42</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">35.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>42/42</span>
+                <span class='fraction'>15/42</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,83 +110,83 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response } from "express";
 import { tCreateUser, tListUsers } from "../../interfaces/user.interfaces";
 import { createUserService, deleteUserService, listUsersService, loginUserService, updateUserService } from "../../services";
 &nbsp;
-const createUser = async (request: Request, response: Response) =&gt; {
-  const userData: tCreateUser = request.body;
+const createUser = <span class="fstat-no" title="function not covered" >async (request: Request, response: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const userData: tCreateUser = request.body;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const newUser = await createUserService(userData);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return response.status(201).json(newUser);</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-  const newUser = await createUserService(userData);
+const loginUser = <span class="fstat-no" title="function not covered" >async (request: Request, response: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const token: string = await loginUserService(request.body);</span>
+<span class="cstat-no" title="statement not covered" >  </span>
+<span class="cstat-no" title="statement not covered" >    return response.status(200).json({ token: token });</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
-  return response.status(201).json(newUser);
-};
+const listUsers = <span class="fstat-no" title="function not covered" >async (request: Request, response: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const userList: tListUsers = await listUsersService();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return response.status(200).json(userList);</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-const loginUser = async (request: Request, response: Response) =&gt; {
-    const token: string = await loginUserService(request.body);
-  
-    return response.status(200).json({ token: token });
-  };
+const updateUser = <span class="fstat-no" title="function not covered" >async (request: Request, response: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const id: number = Number(request.params.id)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const updatedUser = await updateUserService(request.body, id)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return response.status(200).json(updatedUser)</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-const listUsers = async (request: Request, response: Response) =&gt; {
-  const userList: tListUsers = await listUsersService();
-&nbsp;
-  return response.status(200).json(userList);
-};
-&nbsp;
-const updateUser = async (request: Request, response: Response) =&gt; {
-  const id: number = Number(request.params.id)
-&nbsp;
-  const updatedUser = await updateUserService(request.body, id)
-&nbsp;
-  return response.status(200).json(updatedUser)
-}
-&nbsp;
-const deleteUser = async (request: Request, response: Response) =&gt; {
-&nbsp;
-  const id: number = Number(request.params.id)
-&nbsp;
-  await deleteUserService(id)
-&nbsp;
-  response.status(204).send()
-}
+const deleteUser = <span class="fstat-no" title="function not covered" >async (request: Request, response: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const id: number = Number(request.params.id)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  await deleteUserService(id)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  response.status(204).send()</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 export default { createUser, listUsers, loginUser, updateUser, deleteUser };
 &nbsp;</pre></td></tr></table></pre>
@@ -196,7 +196,7 @@ export default { createUser, listUsers, loginUser, updateUser, deleteUser };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-08T13:24:54.437Z
+                at 2023-03-10T22:43:24.463Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

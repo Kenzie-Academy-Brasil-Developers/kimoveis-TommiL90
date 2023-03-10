@@ -49,6 +49,7 @@ const createScheduleService = async (
   //   .andWhere("schedule.hour = :hour", { hour })
   //   .andWhere("schedule.user = :idUser", { idUser })
   //   .getOne();
+  //   console.log(userHasSchedule)
 
   const userHasSchedule = await scheduleRepo
     .createQueryBuilder("schedule")

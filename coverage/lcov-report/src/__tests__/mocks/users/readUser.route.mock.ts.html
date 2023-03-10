@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/30</span>
+                <span class='fraction'>10/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>30/30</span>
+                <span class='fraction'>10/30</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,26 +101,26 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { DeepPartial, Repository } from 'typeorm';
@@ -130,27 +130,27 @@ import { User } from '../../../entities';
 type iUserRepo = Repository&lt;User&gt;;
 type iUserDeepPartial = DeepPartial&lt;User&gt;;
 &nbsp;
-const readUsers = async (): Promise&lt;Array&lt;User&gt;&gt; =&gt; {
-  const userRepo: iUserRepo = AppDataSource.getRepository(User);
-  const usersTotal: number = 5;
-&nbsp;
-  return await userRepo.save(
-    Array.from(Array(usersTotal))
-      .map((val, index): iUserDeepPartial =&gt; {
-        const name: string = `user${index}`;
-        const email: string = `${name}@mail.com`;
-&nbsp;
-        return {
-          id: expect.any(Number),
-          name,
-          email,
-          password: '1234',
-          admin: expect.any(Boolean),
-        };
-      })
-      .map(({ id, ...el }) =&gt; el)
-  );
-};
+const readUsers = <span class="fstat-no" title="function not covered" >async (): Promise&lt;Array&lt;User&gt;&gt; =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const userRepo: iUserRepo = AppDataSource.getRepository(User);</span>
+<span class="cstat-no" title="statement not covered" >  const usersTotal: number = 5;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return await userRepo.save(</span>
+<span class="cstat-no" title="statement not covered" >    Array.from(Array(usersTotal))</span>
+<span class="cstat-no" title="statement not covered" >      .map((val, index): iUserDeepPartial =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        const name: string = `user${index}`;</span>
+<span class="cstat-no" title="statement not covered" >        const email: string = `${name}@mail.com`;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        return {</span>
+<span class="cstat-no" title="statement not covered" >          id: expect.any(Number),</span>
+<span class="cstat-no" title="statement not covered" >          name,</span>
+<span class="cstat-no" title="statement not covered" >          email,</span>
+<span class="cstat-no" title="statement not covered" >          password: '1234',</span>
+<span class="cstat-no" title="statement not covered" >          admin: expect.any(Boolean),</span>
+<span class="cstat-no" title="statement not covered" >        };</span>
+<span class="cstat-no" title="statement not covered" >      })</span>
+<span class="cstat-no" title="statement not covered" >      .map(({ id, ...el }) =&gt; el)</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
 export default { readUsers };
 &nbsp;</pre></td></tr></table></pre>
@@ -160,7 +160,7 @@ export default { readUsers };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-08T13:24:54.437Z
+                at 2023-03-10T22:43:24.463Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
