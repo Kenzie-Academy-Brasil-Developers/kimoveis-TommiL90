@@ -11,11 +11,11 @@ const verifyCategoryExistMiddleware = async (
 ): Promise<Response | void> => {
   const categoryName: string = request.body.name;
 
-  const userRepo = AppDataSource.getRepository(Category);
+  const categoryRepo = AppDataSource.getRepository(Category);
 
-  const user = await userRepo.findOneBy({ name: categoryName });
+  const category = await categoryRepo.findOneBy({ name: categoryName });
 
-  if (user) {
+  if (category) {
     throw new AppError("Category already exists", 409);
   }
 
