@@ -2,6 +2,10 @@
 
 ![Der](./der.png)
 
+## Endpoints do serviço
+
+![Endpoints](./Endpoints.png)
+
 
 ## Inicio
 
@@ -26,6 +30,85 @@ npm init -y
 # caso use yarn
 yarn init -y
 ```
+
+## Requisitos do Serviço
+
+### POST - /users
+
+Rota para criação de usuário com os seguintes dados:
+
+- **id**: Valor SERIAL. Não deve ser passado no body da request, e sim gerado de forma automática pelo typeORM.
+- **name**: string e obrigatório.
+- **email**: string, obrigatório e único.
+- **password**: Deverá receber uma string mas armazenar uma hash gerada com o bcryptjs.
+- **admin**: boolean e false por padrão.
+- **createdAt**: Não deve ser passado mas gerado pelo typeORM.
+- **updatedAt**: Não deve ser passado mas gerado pelo typeORM.
+- **deletedAt**: Não deve ser passado mas gerado pelo typeORM.
+
+A rota de criação deve retornar todos os dados, com exceção da hash de senha.
+Não podem ser cadastrados dois usuários com o mesmo e-mail.
+
+### GET - /users
+
+A rota deve retornar todos os dados dos usuários, com exceção da hash de senha.
+A rota pode ser acessada apenas por usuários administradores (admin = true).
+
+### PATCH - /users/:id
+
+A rota deve atualizar os dados do usuário.
+Não deve ser possível atualizar os campos id e admin.
+Apenas administradores podem atualizar qualquer usuário, usuários não-administradores podem apenas atualizar seu próprio usuário.
+
+### DELETE - /users/:id
+
+A rota deve realizar um soft delete do usuário.
+A rota pode ser acessada apenas por administradores.
+Não deve ser possível realizar um soft delete em um usuário já deletado.
+
+### POST - /login
+
+Rota de login recebendo email e password.
+O login deve validar se o usuário existe e validar se a senha está correta.
+Não deve ser possível realizar o login de um usuário deletado.
+
+### POST - /categories
+
+Rota para criação de categorias com os seguintes dados:
+
+- **id**: Valor SERIAL. Não deve ser passado no body da request, e sim gerado de forma automática pelo typeORM.
+- **name**: string e obrigatório.
+
+Não podem ser cadastradas duas categorias com o mesmo nome.
+A rota pode ser acessada apenas por usuários administradores (admin = true).
+
+### GET - /categories
+
+Rota deve listar todas as categorias.
+A rota não precisa de autenticação para ser acessada.
+
+### GET - /categories/:id/realEstate
+
+Rota deve listar todos os imóveis que pertencem a uma categoria.
+A rota não precisa de autenticação para ser acessada.
+
+### POST - /realEstate
+
+Rota para criação de um imóvel com os seguintes dados:
+
+- **id**: Valor SERIAL. Não deve ser passado no body da request, e sim gerado de forma automática pelo typeORM.
+- **value**: decimal e obrigatório.
+- **size**: inteiro e obrigatório.
+- **address**: um objeto com os seguintes dados:
+  - **street**: string e obrigatório.
+  - **zipCode**: string e obrigatório.
+  - **number**: string e opcional.
+  - **city**: string e obrigatório.
+  - **state**: string e obrigatório.
+- **categoryId**: number.
+- **sold**: Não deve ser passado mas gerado no momento da validação dos dados no formato boolean com default = false.
+- **createdAt**: Não deve ser passado mas gerado pelo typeORM.
+- **
 
 ## Dependências dos testes
 
